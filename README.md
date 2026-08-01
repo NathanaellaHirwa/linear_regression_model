@@ -10,8 +10,8 @@ likely shortfalls before the season ends.
 Rwanda), 10 crops. Source: [ManikantaSanjay/crop_yield_prediction_regression](https://github.com/ManikantaSanjay/crop_yield_prediction_regression) (`yield_df.csv`).
 
 ## Live Links
-- **API (Swagger UI):** `https://YOUR-RENDER-APP-NAME.onrender.com/docs` ← replace after deploying (see below)
-- **YouTube demo video:** `PASTE_YOUTUBE_LINK_HERE`
+- **API (Swagger UI):** `https://YOUR-RENDER-APP-NAME.onrender.com/docs` ← **TODO: replace after deploying (see below)**
+- **YouTube demo video:** `PASTE_YOUTUBE_LINK_HERE` ← **TODO: replace after recording (see [Task 4](#task-4--video-demo-7-min))**
 
 ## Repo Structure
 ```
@@ -34,6 +34,21 @@ linear_regression_model/
 │   └── uv.lock
 └── README.md
 ```
+
+## Key Visualizations
+
+**Correlation heatmap** — `pesticides_tonnes` correlates most strongly with yield; rainfall
+correlates weakly at the aggregate level since its effect depends on crop/region; temperature
+shows a mild negative relationship. This is why `Area`/`Item` (categorical, not shown in a
+numeric correlation) end up mattering more than any single climate variable.
+
+![Correlation heatmap](summative/linear_regression/plots_correlation_heatmap.png)
+
+**Feature distributions** — yield, rainfall, and pesticide use are all right-skewed (a small
+number of high-input/high-yield crop-country pairs pull the tail), which is part of why
+tree-based models outperform the linear models below.
+
+![Feature distributions](summative/linear_regression/plots_distributions.png)
 
 ## Task 1 — Model
 Open `summative/linear_regression/multivariate.ipynb`. It:
@@ -68,12 +83,21 @@ Visit `http://127.0.0.1:8000/docs` for Swagger UI. Endpoints:
 headers only, credentials disabled — see comments in `prediction.py` for full reasoning.
 
 ### Deploying to Render (free tier)
-1. Push this repo to GitHub.
-2. On [render.com](https://render.com) → New → Web Service → connect the repo.
-3. Root directory: `linear_regression_model/summative/API`
-4. Build command: `pip install -r requirements.txt`
-5. Start command: `uvicorn prediction:app --host 0.0.0.0 --port $PORT`
-6. Deploy, then copy the public URL into `FlutterApp/lib/main.dart` (`kApiBaseUrl`) and into this README.
+This repo includes [`render.yaml`](render.yaml) (a Render Blueprint), so the easiest path is:
+1. Push this repo to GitHub (already done if you're reading this on GitHub).
+2. On [render.com](https://render.com) → **New** → **Blueprint** → connect this repo → Render
+   auto-detects `render.yaml` (root dir `summative/API`, build/start commands, health check) → **Apply**.
+3. Wait for the first deploy to finish, then open `https://<your-service-name>.onrender.com/docs`
+   to confirm Swagger UI loads.
+4. Paste that URL into the **Live Links** section above and into `kApiBaseUrl` in
+   [`FlutterApp/lib/main.dart`](summative/FlutterApp/lib/main.dart#L10).
+
+Manual alternative (New → Web Service instead of Blueprint): root directory
+`summative/API`, build command `pip install -r requirements.txt`, start command
+`uvicorn prediction:app --host 0.0.0.0 --port $PORT`.
+
+Note: Render's free tier spins down on idle, so the first request after inactivity can take
+~30–60s to respond (cold start) — worth mentioning in the video if a Swagger call looks slow.
 
 ## Task 3 — Flutter App
 Single page: 6 text fields (Area, Item, Year, Rainfall, Pesticides, Avg Temp) matching
