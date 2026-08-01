@@ -1,0 +1,30 @@
+C:\Users\NathanellaHirwa\Downloads\mltrying\linear_regression_model\summative\.venv\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator StandardScaler from version 1.8.0 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\NathanellaHirwa\Downloads\mltrying\linear_regression_model\summative\.venv\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator OneHotEncoder from version 1.8.0 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\NathanellaHirwa\Downloads\mltrying\linear_regression_model\summative\.venv\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator ColumnTransformer from version 1.8.0 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\NathanellaHirwa\Downloads\mltrying\linear_regression_model\summative\.venv\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator DecisionTreeRegressor from version 1.8.0 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\NathanellaHirwa\Downloads\mltrying\linear_regression_model\summative\.venv\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator RandomForestRegressor from version 1.8.0 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+C:\Users\NathanellaHirwa\Downloads\mltrying\linear_regression_model\summative\.venv\Lib\site-packages\sklearn\base.py:525: InconsistentVersionWarning: Trying to unpickle estimator Pipeline from version 1.8.0 when using version 1.9.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+INFO:     Started server process [16576]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:61045 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61046 - "POST /predict HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:61050 - "POST /predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61354 - "OPTIONS /predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61354 - "POST /predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61427 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61543 - "POST /predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61549 - "POST /predict HTTP/1.1" 200 OK
