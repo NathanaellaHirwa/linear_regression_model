@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 //   https://crop-yield-api.onrender.com
 // Do NOT include a trailing slash.
 // -----------------------------------------------------------------------
-const String kApiBaseUrl = "http://127.0.0.1:8000";
+const String kApiBaseUrl = "https://crop-yield-api-vwwo.onrender.com";
 
 void main() {
   runApp(const CropYieldApp());
