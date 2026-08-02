@@ -61,10 +61,17 @@ uvicorn prediction:app --reload
 ```
 Visit `http://127.0.0.1:8000/docs` for Swagger UI. Endpoints:
 - `POST /predict` — body: `{area, item, year, average_rain_fall_mm_per_year, pesticides_tonnes, avg_temp}`
-- `POST /retrain` — multipart file upload of a CSV with the same schema as `yield_df.csv`; retrains and overwrites `best_model.joblib`
+- `POST /upload-data` — multipart CSV upload (same schema as `yield_df.csv`) for the **automatic**
+  retraining path: the file is validated and saved, and a background watcher retrains from it
+  within 30s with no further action needed — this is the reactive "model updates when new data
+  is seen" path.
+- `POST /retrain` — multipart CSV upload that retrains **synchronously** in the request (manual/
+  immediate override of the same logic `/upload-data` triggers automatically).
 - `GET /health` — status check
 
-**CORS:** explicit allow-list (no wildcard `*`), `GET`/`POST` only, `Content-Type`/`Authorization`
+**CORS:** explicit allow-list for production domains (no wildcard `*`), plus a regex scoped to
+`localhost`/`127.0.0.1` on any port (so `flutter run -d chrome`'s random dev port works without
+loosening anything for real external origins), `GET`/`POST` only, `Content-Type`/`Authorization`
 headers only, credentials disabled — see comments in `prediction.py` for full reasoning.
 
 ### Deploying to Render (free tier)
