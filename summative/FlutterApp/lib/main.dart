@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -90,13 +91,17 @@ class _PredictionPageState extends State<PredictionPage> {
     };
 
     try {
+      // 60s, not 20s: Render's free tier spins the API down after 15 min of
+      // inactivity, and cold-starting it (loading pandas/sklearn + the model)
+      // can take 30-60s. A short timeout here reads as "network error" even
+      // though the request would have succeeded a few seconds later.
       final response = await http
           .post(
             url,
             headers: {"Content-Type": "application/json"},
             body: jsonEncode(body),
           )
-          .timeout(const Duration(seconds: 20));
+          .timeout(const Duration(seconds: 60));
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
@@ -116,6 +121,13 @@ class _PredictionPageState extends State<PredictionPage> {
           _isError = true;
         });
       }
+    } on TimeoutException {
+      setState(() {
+        _resultText = "The API took too long to respond. If it's been idle, "
+            "Render's free tier can take up to a minute to wake up - "
+            "please try again.";
+        _isError = true;
+      });
     } catch (e) {
       setState(() {
         _resultText = "Network error: could not reach the API. $e";
