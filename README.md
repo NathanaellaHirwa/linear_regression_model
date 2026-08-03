@@ -11,7 +11,7 @@ Rwanda), 10 crops. Source: [ManikantaSanjay/crop_yield_prediction_regression](ht
 
 ## Live Links
 - **API (Swagger UI):** [https://crop-yield-api-vwwo.onrender.com/docs](https://crop-yield-api-vwwo.onrender.com/docs)
-- **YouTube demo video:** ` https://youtu.be/xiyjItSuBqQ `
+- **YouTube demo video:**[ https://youtu.be/xiyjItSuBqQ ](https://youtu.be/xiyjItSuBqQ)
 
 ## Repo Structure
 ```
@@ -99,4 +99,4 @@ flutter run   # run on a connected device/emulator
 Before running, set `kApiBaseUrl` in `lib/main.dart` to your deployed Render URL.
 
 ## Task 4 — Video Demo (≤7 min)
-- **YouTube demo video:** ` https://youtu.be/xiyjItSuBqQ `
+- **YouTube demo video:** [ https://youtu.be/xiyjItSuBqQ ](https://youtu.be/xiyjItSuBqQ)
