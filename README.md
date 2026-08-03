@@ -11,7 +11,7 @@ Rwanda), 10 crops. Source: [ManikantaSanjay/crop_yield_prediction_regression](ht
 
 ## Live Links
 - **API (Swagger UI):** [https://crop-yield-api-vwwo.onrender.com/docs](https://crop-yield-api-vwwo.onrender.com/docs)
-- **YouTube demo video:** `PASTE_YOUTUBE_LINK_HERE`
+- **YouTube demo video:** ` `
 
 ## Repo Structure
 ```
@@ -99,15 +99,4 @@ flutter run   # run on a connected device/emulator
 Before running, set `kApiBaseUrl` in `lib/main.dart` to your deployed Render URL.
 
 ## Task 4 — Video Demo (≤7 min)
-Script/checklist in `VIDEO_DEMO_SCRIPT.md` at the repo root.
-
-## Model Performance Summary
-| Model | Test MSE | Test R² |
-|---|---|---|
-| **RandomForest (saved/best)** | ~2.99e8 | **0.959** |
-| DecisionTree | ~5.62e8 | 0.922 |
-| OLS LinearRegression | ~1.82e9 | 0.749 |
-| SGD LinearRegression | ~1.87e9 | 0.742 |
-
-Tree-based models win because yield depends on non-linear interactions between
-crop type, country, and climate that a straight-line model can't capture.
+- **YouTube demo video:** ` `
