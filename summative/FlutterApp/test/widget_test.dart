@@ -1,9 +1,6 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
+// Basic smoke test for the crop yield prediction form. It only checks that
+// the UI renders correctly - it does not tap "Predict", since that fires a
+// real HTTP call to the live API and would make this test flaky/networked.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -11,20 +8,39 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:crop_yield_predictor/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('Crop yield predictor form renders with default values',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(const CropYieldApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // App bar + submit button.
+    expect(find.text('Crop Yield Predictor'), findsOneWidget);
+    expect(find.text('Predict'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    // All 6 prediction inputs are present.
+    expect(find.byType(TextFormField), findsNWidgets(6));
+
+    // Pre-filled default values (Rwanda/Cassava example row).
+    expect(find.text('Rwanda'), findsOneWidget);
+    expect(find.text('Cassava'), findsOneWidget);
+    expect(find.text('2013'), findsOneWidget);
+    expect(find.text('1212'), findsOneWidget);
+    expect(find.text('157'), findsOneWidget);
+    expect(find.text('19.39'), findsOneWidget);
+
+    // No result/error banner until a prediction has been made.
+    expect(find.textContaining('Predicted yield'), findsNothing);
+    expect(find.textContaining('Error:'), findsNothing);
+  });
+
+  testWidgets('Clearing a required field shows a validation error',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(const CropYieldApp());
+
+    // Area is the first of the 6 fields.
+    await tester.enterText(find.byType(TextFormField).first, '');
+    await tester.tap(find.text('Predict'));
     await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.text('Area is required'), findsOneWidget);
   });
 }
