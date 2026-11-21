@@ -13,7 +13,7 @@
 
 ## Public API (Swagger UI)
 
-**<https://YOUR-SERVICE-NAME.onrender.com/docs>**  <!-- TODO: replace with your real Render URL before submitting -->
+**<https://garment-productivity-api.onrender.com/docs>**
 
 Routes: `POST /predict`, `POST /retrain` (CSV upload), `GET /docs`. A free Render service sleeps after 15 minutes without traffic; the first request can take up to a minute.
 
@@ -33,7 +33,7 @@ Routes: `POST /predict`, `POST /retrain` (CSV upload), `GET /docs`. A free Rende
 5. Install packages and run:
    ```powershell
    flutter pub get
-   flutter run --dart-define=API_BASE_URL=https://YOUR-SERVICE-NAME.onrender.com
+   flutter run --dart-define=API_BASE_URL=https://garment-productivity-api.onrender.com
    ```
 6. Fill in the 12 fields (the hint under each field shows the allowed values), press **Predict**, and read the result in the card below the button. Example: `sewing`, `Tuesday`, `1`, `2`, `0.75`, `22.5`, `900`, `5000`, `0`, `0`, `0`, `40`. Leave a field empty, type text in a number field, or enter an out-of-range value to see the error messages.
 
