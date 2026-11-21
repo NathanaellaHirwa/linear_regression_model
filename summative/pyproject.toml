@@ -1,0 +1,25 @@
+[project]
+name = "garment-productivity-notebook"
+version = "0.1.0"
+description = "Notebook environment for the garment productivity regression models"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "pandas>=2.2",
+    "numpy>=1.26",
+    "scikit-learn==1.7.2",
+    "matplotlib>=3.9",
+    "seaborn>=0.13",
+    "joblib>=1.4",
+    "jupyterlab>=4.2",
+    "ipykernel>=6.29",
+    "nbformat>=5.10",
+    "nbconvert>=7.16",
+    # Needed only if you want to run the API from this same environment
+    "fastapi>=0.115",
+    "uvicorn>=0.30",
+    "pydantic>=2.8",
+    "python-multipart>=0.0.9",
+]
+
+[tool.uv]
+package = false
