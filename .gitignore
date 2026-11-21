@@ -1,0 +1,21 @@
+# Python / uv
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.tmp
+
+# Flutter / Android build output (the FlutterApp folder also has its own .gitignore)
+FlutterApp/build/
+FlutterApp/.dart_tool/
+FlutterApp/android/.gradle/
+FlutterApp/android/local.properties
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+
+# anchored paths under summative/
+summative/FlutterApp/build/
+summative/FlutterApp/.dart_tool/
